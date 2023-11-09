@@ -1,0 +1,267 @@
+17
+class Car:
+    color = None
+    fuel = None
+    company = 'Toyota'
+    model = 'Sprinter Trueno APEX (AE 86)'
+
+    def go(self):
+        pass
+
+    def turn(self):
+        pass
+
+    def stop(self):
+        pass
+
+    def show_stat(self):
+        print(f'Автомобиль марки {Car.company}, модель {Car.model}, цвета "{Car.color}", с предположительным баков в {Car.fuel} литров двигалась вниз по склону. Будьте осторожны')
+18
+class Employee:
+    __name = None
+    __salary = None
+    __age = None
+
+    def __init__(self):
+        pass
+
+    def getName(self):
+        return self.__name
+
+    def getSalary(self):
+        return self.__salary
+
+    def getAge(self):
+        return self.__age
+
+    def setName(self, name):
+        self.__name = name
+
+    def setSalary(self, salary):
+        self.__salary = salary
+
+    def setAge(self, age):
+        if 0 < age <= 120:
+            self.__age = age
+        else:
+            raise Exception('Incorrect')
+
+
+arthur = Employee()
+arthur.setName('Arthur')
+arthur.setSalary(3600)
+arthur.setAge(25)
+
+print(arthur.getName())
+print(arthur.getSalary())
+print(arthur.getAge())
+
+53
+import math
+
+class Circle:
+    def __init__(self, radius) -> None:
+        self.radius = radius
+
+    def get_s(self):
+        return math.pi * (self.radius ** 2)
+
+    def get_p(self):
+        return 2 * math.pi * self.radius
+54class Rectangle:
+    def __init__(self, width, height) -> None:
+        self.width = width
+        self.height = height
+
+    def get_s(self):
+        return self.width * self.height
+
+    def get_p(self):
+        return 2 * self.width + 2 * self.height
+
+    def get_define_s_and_p(self):
+        return self.get_s() / self.get_p()
+
+56
+class Period:
+    #Моменты времени передаются в секундах
+    def __init__(self, first_moment, second_moment) -> None:
+        self.first_moment = first_moment
+        self.second_moment = second_moment
+
+    def get_dif_moment(self):
+        return self.second_moment - self.first_moment
+
+    def get_dif_moment_from_minutes(self):
+        return (self.second_moment - self.first_moment) / 60
+
+    def get_dif_moment_from_hours(self):
+        return (self.second_moment - self.first_moment) / 60 / 60
+
+    def get_dif_moment_from_days(self):
+        return (self.second_moment - self.first_moment) / 60 / 60 / 24
+
+57
+class Zate:
+    def __init__(self, year, month, day) -> None:
+        self.year = year
+        self.month = month
+        self.day = day
+
+        self.last_day_of_month = dict()
+        self.name_month = {1 : 'Январь', 2 : 'Февраль', 3 : 'Март', 4 : 'Апрель',
+                           5 : 'Май', 6 : 'Июнь', 7 : 'Июль', 8 : 'Август',
+                           9 : 'Сентябрь', 10 : 'Октябрь', 11 : 'Ноябрь', 12 : 'Декабрь'}
+        self.name_day_of_week = {1 : 'Понедельник', 2 : 'Вторник', 3 : 'Среда', 4 : 'Четверг',
+                                 5 : 'Пятница', 6 : 'Суббота', 7 : 'Воскресенье'}
+
+        for i in range(12):
+            if month <= 7:
+                if month % 2 == 1:
+                    self.last_day_of_month.update(i + 1, 31)
+                else:
+                    self.last_day_of_month.update(i + 1, 30)
+            else:
+                if self.num_month % 2 == 0:
+                    self.last_day_of_month.update(i + 1, 31)
+                else:
+                    self.last_day_of_month.update(i + 1, 30)
+
+        num = 0
+        for i in range(self.num_month):
+            num += self.last_day_of_month(i + 1)
+
+        self.days_after = (year * 365 + year // 4) + num + day
+
+    def get_year(self):
+        return self.year
+
+    def get_month(self):
+        return self.month
+
+    def get_day(self):
+        return  self.day
+
+    def get_num_day_of_week(self):
+        return self.days_after % 7
+
+    def get_name_day_of_week(self):
+        return self.name_day_of_week(self.days_after % 7)
+
+    def get_name_month(self):
+        return self.name_month(self.month)
+
+58
+class Zate:
+    def __init__(self, year, month, day) -> None:
+        self.year = year
+        self.month = month
+        self.day = day
+
+        self.last_day_of_month = dict()
+        self.name_month = {1 : 'Январь', 2 : 'Февраль', 3 : 'Март', 4 : 'Апрель',
+                           5 : 'Май', 6 : 'Июнь', 7 : 'Июль', 8 : 'Август',
+                           9 : 'Сентябрь', 10 : 'Октябрь', 11 : 'Ноябрь', 12 : 'Декабрь'}
+        self.name_day_of_week = {1 : 'Понедельник', 2 : 'Вторник', 3 : 'Среда', 4 : 'Четверг',
+                                 5 : 'Пятница', 6 : 'Суббота', 7 : 'Воскресенье'}
+
+        for i in range(12):
+            if month <= 7:
+                if month % 2 == 1:
+                    self.last_day_of_month.update(i + 1, 31)
+                else:
+                    self.last_day_of_month.update(i + 1, 30)
+            else:
+                if self.num_month % 2 == 0:
+                    self.last_day_of_month.update(i + 1, 31)
+                else:
+                    self.last_day_of_month.update(i + 1, 30)
+
+        num = 0
+        for i in range(self.num_month):
+            num += self.last_day_of_month(i + 1)
+
+        self.days_after = (year * 365 + year // 4) + num + day
+
+    def get_year(self):
+        return self.year
+
+    def get_month(self):
+        return self.month
+
+    def get_day(self):
+        return  self.day
+
+    def get_num_day_of_week(self):
+        return self.days_after % 7
+
+    def get_name_day_of_week(self):
+        return self.name_day_of_week(self.days_after % 7)
+
+    def get_name_month(self):
+        return self.name_month(self.month)
+
+class ZateExt(Zate):
+    def sum_year(self, year):
+        self.year += year
+
+    def dif_year(self, year):
+        self.year -= year
+
+    def sum_month(self, month):
+        self.month += month
+
+    def dif_month(self, month):
+        self.month -= month
+
+    def sum_day(self, day):
+        self.day += day
+
+    def dif_day(self, day):
+        self.day -= day
+
+59
+class Month:
+    def __init__(self, num_month) -> None:
+        self.last_day_of_month = dict()
+        self.num_month = num_month
+        self.name_month = {1 : 'Январь', 2 : 'Февраль', 3 : 'Март', 4 : 'Апрель',
+                           5 : 'Май', 6 : 'Июнь', 7 : 'Июль', 8 : 'Август',
+                           9 : 'Сентябрь', 10 : 'Октябрь', 11 : 'Ноябрь', 12 : 'Декабрь'}
+
+        for i in range(12):
+            if self.num_month <= 7:
+                if self.num_month % 2 == 1:
+                    self.last_day_of_month.update(i + 1, 31)
+                else:
+                    self.last_day_of_month.update(i + 1, 30)
+            else:
+                if self.num_month % 2 == 0:
+                    self.last_day_of_month.update(i + 1, 31)
+                else:
+                    self.last_day_of_month.update(i + 1, 30)
+
+    def get_num_month(self):
+        return self.num_month
+
+    def get_name_month(self):
+        return self.name_month(self.num_month)
+
+    def get_last_num_day_month(self):
+        return self.last_day_of_month(self.num_month)
+
+    def first_day_week_of_month(self):
+        num = 0
+
+        for i in range(self.num_month - 1):
+            num += self.last_day_of_month(i + 1)
+
+        return (num + 1) % 7
+
+    def last_day_week_of_month(self):
+        num = 0
+
+        for i in range(self.num_month):
+            num += self.last_day_of_month(i + 1)
+
+        return num % 7
